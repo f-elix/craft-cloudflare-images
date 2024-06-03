@@ -33,10 +33,12 @@ class CloudflareImagesFs extends Fs
     /**
      * @inheritdoc
      */
-    public function __construct()
+    public function __construct($config = [])
     {
-        parent::__construct();
-        $this->settings = \deuxhuithuit\cfimages\Plugin::getInstance()->settings;
+        parent::__construct($config);
+        /** @var \deuxhuithuit\deuxhuithuit\cfimages\Plugin  */
+        $plugin = \deuxhuithuit\cfimages\Plugin::getInstance();
+        $this->settings = $plugin->settings;
         $this->client = new CloudflareImagesClient($this->settings);
     }
 
