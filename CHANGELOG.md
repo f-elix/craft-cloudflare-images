@@ -1,5 +1,10 @@
 # Change log
 
+## 1.1.0 - 2024-06-03
+
+* 0887b2fed8 (feat) Allow config in constructor
+* 9b2dd0d833 (fix) Override static properties
+
 ## 1.0.2 - 2024-02-08
 
 * 1d9dd16d0d (chore) Add php 8.3 support
