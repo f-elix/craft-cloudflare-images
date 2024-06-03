@@ -12,7 +12,17 @@ use deuxhuithuit\cfimages\Filename;
 
 class CloudflareImagesFs extends Fs
 {
-    /** @var Settings */
+    /**
+     * @inheritdoc
+     */
+    protected static bool $showHasUrlSetting = false;
+
+    /**
+     * @inheritdoc
+     */
+    protected static bool $showUrlSetting = false;
+
+    /** @var \deuxhuithuit\cfimages\models\Settings */
     private $settings;
 
     /** @var CloudflareImagesClient */
@@ -28,8 +38,6 @@ class CloudflareImagesFs extends Fs
         parent::__construct();
         $this->settings = \deuxhuithuit\cfimages\Plugin::getInstance()->settings;
         $this->client = new CloudflareImagesClient($this->settings);
-        static::$showUrlSetting = false;
-        static::$showHasUrlSetting = false;
     }
 
     /**
