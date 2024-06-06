@@ -1,5 +1,11 @@
 # Change log
 
+We try to maintain a complete change log, based on what is available in git.
+
+## 1.2.0 - 2024-06-06
+
+* 257fa1c414 (feat) impl: CloudflareImagesFs::fileExists()
+
 ## 1.1.0 - 2024-06-03
 
 * 0887b2fed8 (feat) Allow config in constructor
