@@ -196,6 +196,30 @@ class CloudflareImagesFs extends Fs
     public function fileExists(string $path): bool
     {
         // There are no way for us to know if an image exists without its id
+        if (!$path) {
+            return false;
+        }
+
+        // Check if the file exists in the recent files
+        if (isset($this->recentFiles[$path])) {
+            return true;
+        }
+
+        // Check if the file exists in the cloudflare images
+        try {
+            $imageId = Filename::toId(\basename($path));
+            if (!$imageId) {
+                throw new \Exception('Failed to parse filename');
+            }
+            $image = $this->client->getImage($imageId);
+            if (isset($image['id'])) {
+                return true;
+            }
+
+        } catch (\Exception $e) {
+            // ignore, must not exist
+            $imageId = null;
+        }
         return false;
     }
 
